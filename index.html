@@ -36,20 +36,30 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
-      <h2 class="hero-title">Empowering Moms with AI Solutions</h2>
-      <p class="hero-subtitle">Because moms deserve more than reminders - they deserve real solutions.</p>
-      <a href="#about" class="cta-button">Find Out More</a>
+      <h2 class="hero-title split-text" data-split="words" data-animate="split-text">Empowering Moms with AI Solutions</h2>
+      <p class="hero-subtitle" data-animate="fade-up">Because moms deserve more than reminders - they deserve real solutions.</p>
+      <a href="#about" class="cta-button" data-animate="fade-up">Find Out More</a>
     </div>
   </section>
 
   <!-- About Us Section -->
   <section id="about" class="about">
+    <!-- Cloud Background -->
+    <div class="clouds-bg" aria-hidden="true">
+      <div class="cloud cloud-1" data-scroll-speed="0.3"></div>
+      <div class="cloud cloud-2" data-scroll-speed="0.5"></div>
+      <div class="cloud cloud-3" data-scroll-speed="0.2"></div>
+      <div class="cloud cloud-4" data-scroll-speed="0.6"></div>
+      <div class="cloud cloud-5" data-scroll-speed="0.4"></div>
+      <div class="cloud cloud-6" data-scroll-speed="0.35"></div>
+      <div class="cloud cloud-7" data-scroll-speed="0.55"></div>
+    </div>
     <div class="container">
-      <h2 class="section-title">About Us</h2>
+      <h2 class="section-title" data-animate="scale-up">About Us</h2>
 
       <!-- WHY Subsection -->
-      <div class="about-subsection">
-        <h3 class="subsection-title">WHY</h3>
+      <div class="about-subsection" data-animate="fade-up">
+        <h3 class="subsection-title split-text" data-split="chars" data-animate="split-text">WHY</h3>
         <div class="subsection-content">
           <p>We grew up watching the women we love hold families together through sheer strength, intuition, and resilience. We saw the daily burdens that often go unseen, the mental load, the constant scheduling, the emotional balancing act, the "invisible work" that never stops. And we also saw how rarely they ask for help.</p>
           <p class="highlight">What if technology could finally show up for moms the way they have always shown up for everyone else?</p>
@@ -57,16 +67,16 @@
       </div>
 
       <!-- WHAT Subsection -->
-      <div class="about-subsection">
-        <h3 class="subsection-title">WHAT</h3>
+      <div class="about-subsection" data-animate="fade-up">
+        <h3 class="subsection-title split-text" data-split="chars" data-animate="split-text">WHAT</h3>
         <div class="subsection-content">
           <p>We're creating intelligent assistance that reduces stress, restores time, and brings harmony back into the home. Our AI doesn't just remind you what needs to be done - it understands context, anticipates needs, and helps you make decisions that align with your family's values and priorities.</p>
         </div>
       </div>
 
       <!-- HOW Subsection -->
-      <div class="about-subsection">
-        <h3 class="subsection-title">HOW</h3>
+      <div class="about-subsection" data-animate="fade-up">
+        <h3 class="subsection-title split-text" data-split="chars" data-animate="split-text">HOW</h3>
         <div class="subsection-content">
           <p>Our team combines expertise in artificial intelligence, user experience design, and deep understanding of family dynamics. We design with empathy, build with precision, and test with real moms who share their honest feedback. Every feature is crafted to serve the complex, beautiful reality of modern motherhood.</p>
         </div>
@@ -77,19 +87,19 @@
   <!-- Features Section -->
   <section id="features" class="features">
     <div class="container">
-      <h2 class="section-title">Features</h2>
+      <h2 class="section-title" data-animate="zoom-blur">Main Features</h2>
       <div class="features-grid">
-        <div class="feature-card">
+        <div class="feature-card" data-animate="fade-up" style="--delay: 0.1s">
           <div class="feature-icon">📅</div>
           <h3>Smart Scheduling</h3>
           <p>Intelligent calendar management that understands your family's rhythms and priorities. Never miss what matters most.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card" data-animate="fade-up" style="--delay: 0.2s">
           <div class="feature-icon">🔔</div>
           <h3>Contextual Reminders</h3>
           <p>Reminders that understand context and timing, so you're prompted at exactly the right moment.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card" data-animate="fade-up" style="--delay: 0.3s">
           <div class="feature-icon">🎯</div>
           <h3>Priority Management</h3>
           <p>AI-powered insights to help you focus on what truly matters and let go of the rest.</p>
@@ -98,10 +108,96 @@
     </div>
   </section>
 
+  <!-- Additional Features Button -->
+  <section class="af-button-section">
+    <button class="af-open-btn" id="afOpenBtn" data-animate="scale-up">Additional Features</button>
+  </section>
+
+  <!-- Additional Features Fullscreen Overlay -->
+  <div class="af-overlay" id="afOverlay">
+    <button class="af-close-btn" id="afCloseBtn">&times;</button>
+    <div class="af-slide-counter" id="afCounter">1 / 6</div>
+    <div class="af-slides" id="afSlides">
+
+      <div class="af-slide" style="--slide-bg: #FFD1DC; --slide-border: #1a1a1a;">
+        <div class="af-slide_inner">
+          <span class="af-slide_number">01</span>
+          <h2 class="af-slide_title">[Feature Title 1]</h2>
+          <p class="af-slide_text">[Add your feature description here. Explain what this feature does and how it helps busy moms.]</p>
+          <div class="af-slide_image">
+            <div class="af-slide_placeholder">Image Placeholder</div>
+          </div>
+          <span class="af-slide_scroll">Scroll down</span>
+        </div>
+      </div>
+
+      <div class="af-slide" style="--slide-bg: #C9E4DE; --slide-border: #1a1a1a;">
+        <div class="af-slide_inner">
+          <span class="af-slide_number">02</span>
+          <h2 class="af-slide_title">[Feature Title 2]</h2>
+          <p class="af-slide_text">[Add your feature description here. Explain what this feature does and how it helps busy moms.]</p>
+          <div class="af-slide_image">
+            <div class="af-slide_placeholder">Image Placeholder</div>
+          </div>
+          <span class="af-slide_scroll">Scroll down</span>
+        </div>
+      </div>
+
+      <div class="af-slide" style="--slide-bg: #C3B1E1; --slide-border: #1a1a1a;">
+        <div class="af-slide_inner">
+          <span class="af-slide_number">03</span>
+          <h2 class="af-slide_title">[Feature Title 3]</h2>
+          <p class="af-slide_text">[Add your feature description here. Explain what this feature does and how it helps busy moms.]</p>
+          <div class="af-slide_image">
+            <div class="af-slide_placeholder">Image Placeholder</div>
+          </div>
+          <span class="af-slide_scroll">Scroll down</span>
+        </div>
+      </div>
+
+      <div class="af-slide" style="--slide-bg: #FDFD96; --slide-border: #1a1a1a;">
+        <div class="af-slide_inner">
+          <span class="af-slide_number">04</span>
+          <h2 class="af-slide_title">[Feature Title 4]</h2>
+          <p class="af-slide_text">[Add your feature description here. Explain what this feature does and how it helps busy moms.]</p>
+          <div class="af-slide_image">
+            <div class="af-slide_placeholder">Image Placeholder</div>
+          </div>
+          <span class="af-slide_scroll">Scroll down</span>
+        </div>
+      </div>
+
+      <div class="af-slide" style="--slide-bg: #B5EAD7; --slide-border: #1a1a1a;">
+        <div class="af-slide_inner">
+          <span class="af-slide_number">05</span>
+          <h2 class="af-slide_title">[Feature Title 5]</h2>
+          <p class="af-slide_text">[Add your feature description here. Explain what this feature does and how it helps busy moms.]</p>
+          <div class="af-slide_image">
+            <div class="af-slide_placeholder">Image Placeholder</div>
+          </div>
+          <span class="af-slide_scroll">Scroll down</span>
+        </div>
+      </div>
+
+      <div class="af-slide" style="--slide-bg: #FFB7B2; --slide-border: #1a1a1a;">
+        <div class="af-slide_inner">
+          <span class="af-slide_number">06</span>
+          <h2 class="af-slide_title">[Feature Title 6]</h2>
+          <p class="af-slide_text">[Add your feature description here. Explain what this feature does and how it helps busy moms.]</p>
+          <div class="af-slide_image">
+            <div class="af-slide_placeholder">Image Placeholder</div>
+          </div>
+          <span class="af-slide_scroll">You've reached the end!</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- Contact/Footer Section -->
   <section id="contact" class="contact">
     <div class="container">
-      <div class="contact-wrapper">
+      <div class="contact-wrapper" data-animate="fade-up">
         <!-- Contact Information -->
         <div class="contact-info">
           <h2>Get in Touch</h2>
@@ -149,7 +245,7 @@
       </div>
 
       <!-- Newsletter Subscription -->
-      <div class="newsletter">
+      <div class="newsletter" data-animate="scale-up">
         <h3>Stay Updated</h3>
         <p>Subscribe to receive updates about Busy Moms Assistant AI</p>
         <form class="newsletter-form" id="newsletterForm">

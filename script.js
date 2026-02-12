@@ -1,4 +1,101 @@
 // ===================================
+// Text Splitting for Character/Word Animations
+// ===================================
+class TextSplitter {
+  constructor(element, splitBy = 'chars') {
+    this.element = element;
+    this.splitBy = splitBy;
+    this.originalText = element.textContent.trim();
+  }
+
+  split() {
+    const text = this.originalText;
+    if (this.splitBy === 'chars') {
+      const chars = text.split('');
+      this.element.innerHTML = chars.map((char, i) =>
+        `<span class="char" style="--char-index: ${i}">${char === ' ' ? '&nbsp;' : char}</span>`
+      ).join('');
+    } else if (this.splitBy === 'words') {
+      const words = text.split(' ');
+      this.element.innerHTML = words.map((word, i) =>
+        `<span class="word" style="--word-index: ${i}">${word}</span>`
+      ).join(' ');
+    }
+  }
+}
+
+// ===================================
+// Parallax Scroll Effect
+// ===================================
+function initParallax() {
+  const parallaxElements = document.querySelectorAll('[data-scroll-speed]');
+
+  if (parallaxElements.length === 0) return;
+
+  let ticking = false;
+
+  function updateParallax() {
+    parallaxElements.forEach(el => {
+      const speed = parseFloat(el.dataset.scrollSpeed) || 0.5;
+      const rect = el.getBoundingClientRect();
+      const scrollProgress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+      const yPos = -(scrollProgress - 0.5) * 100 * speed;
+
+      el.style.transform = `translateY(${yPos}px)`;
+    });
+
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  updateParallax(); // Initial call
+}
+
+// ===================================
+// Custom Cursor (Desktop Only)
+// ===================================
+function initCustomCursor() {
+  if (window.innerWidth < 1024) return; // Desktop only
+
+  const cursor = document.createElement('div');
+  cursor.className = 'custom-cursor';
+  document.body.appendChild(cursor);
+
+  let mouseX = 0, mouseY = 0;
+  let cursorX = 0, cursorY = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  // Smooth cursor follow
+  function animateCursor() {
+    cursorX += (mouseX - cursorX) * 0.1;
+    cursorY += (mouseY - cursorY) * 0.1;
+
+    cursor.style.left = cursorX + 'px';
+    cursor.style.top = cursorY + 'px';
+
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
+
+  // Expand on interactive elements
+  const interactiveElements = 'a, button, .feature-card, input, textarea';
+  document.querySelectorAll(interactiveElements).forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('cursor-expand'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-expand'));
+  });
+}
+
+// ===================================
 // Mobile Menu Toggle
 // ===================================
 document.addEventListener('DOMContentLoaded', function() {
@@ -130,12 +227,12 @@ function showNotification(message, type = 'success') {
     top: 20px;
     right: 20px;
     padding: 16px 24px;
-    background-color: ${type === 'success' ? '#4CAF50' : '#f44336'};
+    background-color: ${type === 'success' ? '#E89999' : '#f44336'};
     color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(232, 153, 153, 0.3);
     z-index: 10000;
-    font-family: 'Cantarell', sans-serif;
+    font-family: 'Times New Roman', Times, serif;
     font-weight: 700;
     animation: slideInRight 0.3s ease-out;
   `;
@@ -182,9 +279,8 @@ function showNotification(message, type = 'success') {
 }
 
 // ===================================
-// Smooth Scroll Enhancement (Optional)
+// Smooth Scroll Enhancement
 // ===================================
-// Additional smooth scroll for browsers that don't support CSS scroll-behavior
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
     const targetId = this.getAttribute('href');
@@ -206,36 +302,237 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ===================================
-// Fade-in Animation on Scroll
+// Enhanced Scroll Animation Observer
 // ===================================
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: '0px 0px -100px 0px'
-};
-
-const observer = new IntersectionObserver(function(entries) {
+const animationObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
+      entry.target.classList.add('is-inview');
+
+      // Unobserve after animation (optional - allows for one-time animations)
+      if (entry.target.dataset.animateOnce !== 'false') {
+        animationObserver.unobserve(entry.target);
+      }
     }
   });
-}, observerOptions);
+}, {
+  threshold: 0.1,
+  rootMargin: '-50px 0px -50px 0px'
+});
 
-// Observe elements for fade-in animation
-document.addEventListener('DOMContentLoaded', function() {
-  const animateElements = document.querySelectorAll('.about-subsection, .feature-card');
+// ===================================
+// Additional Features Fullscreen Overlay
+// ===================================
+function initAdditionalFeatures() {
+  const openBtn = document.getElementById('afOpenBtn');
+  const closeBtn = document.getElementById('afCloseBtn');
+  const overlay = document.getElementById('afOverlay');
+  const slidesContainer = document.getElementById('afSlides');
+  const counter = document.getElementById('afCounter');
+  const slides = document.querySelectorAll('.af-slide');
 
-  animateElements.forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-    observer.observe(el);
+  if (!openBtn || !overlay) return;
+
+  const totalSlides = slides.length;
+
+  // Open overlay
+  openBtn.addEventListener('click', () => {
+    overlay.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    slidesContainer.scrollTop = 0;
+    updateSlideVisibility();
+    updateCounter();
   });
+
+  // Close overlay
+  closeBtn.addEventListener('click', closeOverlay);
+
+  function closeOverlay() {
+    overlay.classList.remove('is-open');
+    document.body.style.overflow = '';
+    // Reset slide animations
+    slides.forEach(slide => slide.classList.remove('is-visible'));
+  }
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('is-open')) {
+      closeOverlay();
+    }
+  });
+
+  // Track which slide is in view and animate it
+  function updateSlideVisibility() {
+    const scrollTop = slidesContainer.scrollTop;
+    const viewportHeight = slidesContainer.clientHeight;
+
+    slides.forEach((slide, index) => {
+      const slideTop = index * viewportHeight;
+      const distance = Math.abs(scrollTop - slideTop);
+
+      if (distance < viewportHeight * 0.5) {
+        slide.classList.add('is-visible');
+      } else {
+        slide.classList.remove('is-visible');
+      }
+    });
+  }
+
+  // Update counter on scroll
+  function updateCounter() {
+    const scrollTop = slidesContainer.scrollTop;
+    const viewportHeight = slidesContainer.clientHeight;
+    const currentSlide = Math.round(scrollTop / viewportHeight) + 1;
+    counter.textContent = `${currentSlide} / ${totalSlides}`;
+  }
+
+  // Listen for scroll inside overlay
+  slidesContainer.addEventListener('scroll', () => {
+    updateSlideVisibility();
+    updateCounter();
+  }, { passive: true });
+}
+
+// ===================================
+// Cloud Parallax on Scroll
+// ===================================
+function initCloudParallax() {
+  const aboutSection = document.getElementById('about');
+  const clouds = document.querySelectorAll('.cloud');
+
+  if (!aboutSection || clouds.length === 0) return;
+
+  let ticking = false;
+
+  function updateClouds() {
+    const rect = aboutSection.getBoundingClientRect();
+    const sectionTop = rect.top;
+    const windowHeight = window.innerHeight;
+
+    // Only animate when section is near the viewport
+    if (sectionTop < windowHeight && sectionTop > -aboutSection.offsetHeight) {
+      const scrollProgress = (windowHeight - sectionTop) / (windowHeight + aboutSection.offsetHeight);
+
+      clouds.forEach(cloud => {
+        const speed = parseFloat(cloud.dataset.scrollSpeed) || 0.3;
+        const yOffset = (scrollProgress - 0.5) * 200 * speed;
+        const xOffset = (scrollProgress - 0.5) * 60 * speed;
+
+        cloud.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+      });
+    }
+
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateClouds);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  updateClouds();
+}
+
+// ===================================
+// Scroll Progress Bar
+// ===================================
+function initScrollProgress() {
+  // Create progress bar element
+  const progressBar = document.createElement('div');
+  progressBar.className = 'scroll-progress';
+  document.body.appendChild(progressBar);
+
+  // Update progress on scroll
+  window.addEventListener('scroll', () => {
+    const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (window.scrollY / windowHeight) * 100;
+    progressBar.style.width = scrolled + '%';
+  }, { passive: true });
+}
+
+// ===================================
+// Parallax Hero Background
+// ===================================
+function initHeroParallax() {
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+
+  let ticking = false;
+
+  function updateHeroParallax() {
+    const scrolled = window.scrollY;
+    const heroHeight = hero.offsetHeight;
+
+    if (scrolled < heroHeight) {
+      hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+      hero.style.opacity = 1 - (scrolled / heroHeight) * 0.5;
+    }
+
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateHeroParallax);
+      ticking = true;
+    }
+  }, { passive: true });
+}
+
+// ===================================
+// Stagger Animation for Sections
+// ===================================
+function initStaggerAnimations() {
+  const sections = document.querySelectorAll('.about-subsection');
+
+  sections.forEach((section, index) => {
+    section.style.animationDelay = `${index * 0.2}s`;
+    section.style.animationDuration = '1s';
+    section.style.animationFillMode = 'both';
+  });
+}
+
+// ===================================
+// Initialize All Animations
+// ===================================
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize text splitting for split-text animations
+  document.querySelectorAll('.split-text').forEach(el => {
+    const splitter = new TextSplitter(el, el.dataset.split || 'chars');
+    splitter.split();
+  });
+
+  // Observe all elements with data-animate attribute
+  document.querySelectorAll('[data-animate]').forEach(el => {
+    animationObserver.observe(el);
+  });
+
+  // Initialize additional features overlay
+  initAdditionalFeatures();
+
+  // Initialize scroll progress bar
+  initScrollProgress();
+
+  // Initialize hero parallax
+  initHeroParallax();
+
+  // Initialize stagger animations
+  initStaggerAnimations();
+
+  // Initialize cloud parallax
+  initCloudParallax();
+
+  // Initialize parallax scroll effects
+  initParallax();
+
+  // Initialize custom cursor (desktop only)
+  initCustomCursor();
 });
 
 // ===================================
 // Console Welcome Message
 // ===================================
-console.log('%c Busy Moms Assistant AI ', 'background: #633F3A; color: #fff; font-size: 20px; padding: 10px; border-radius: 5px;');
-console.log('%c Empowering Moms with AI Solutions ', 'color: #633F3A; font-size: 14px;');
+console.log('%c Busy Moms Assistant AI ', 'background: #E89999; color: #fff; font-size: 20px; padding: 10px; border-radius: 5px;');
+console.log('%c Empowering Moms with AI Solutions ', 'color: #633F3A; font-size: 14px; font-weight: 600;');
