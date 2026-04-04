@@ -1,3 +1,5 @@
+import { saveFormData } from './db.js'
+
 // ===================================
 // Top Announcement Bar
 // ===================================
@@ -155,7 +157,7 @@ function initContactForm() {
   const form = document.getElementById('contactForm');
   if (!form) return;
 
-  form.addEventListener('submit', function(e) {
+  form.addEventListener('submit', async function(e) {
     e.preventDefault();
 
     const formData = new FormData(this);
@@ -174,7 +176,11 @@ function initContactForm() {
       return;
     }
 
-    console.log('Contact Form Submitted:', { name, email, message });
+    const success = await saveFormData({ name, email, message });
+    if (!success) {
+      showNotification('Failed to save your message. Please try again.', 'error');
+      return;
+    }
     showNotification('Thank you for your message! We\'ll get back to you soon.', 'success');
     this.reset();
   });
