@@ -177,22 +177,27 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0 var(--space-md);
   display: flex;
   align-items: center;
-  height: 72px;
+  height: 140px;
   gap: var(--space-lg);
 }
 
 .header-logo {
   flex-shrink: 0;
   border-right: var(--border);
-  padding-right: var(--space-md);
-  height: 100%;
+  padding: 0;
   display: flex;
-  align-items: center;
+  align-items: stretch;
+  height: 100%;
+  width: 140px;
+  margin-left: -115px;
 }
 
 .logo-link {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
 }
 
 .logo-text {
@@ -418,10 +423,11 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Logo image */
 .logo-img {
-  height: 48px;
-  width: auto;
+  height: 100% !important;
+  width: 100% !important;
   display: block;
   object-fit: contain;
+  object-position: center center;
 }
 
 /* Hero image */
