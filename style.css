@@ -628,7 +628,7 @@ h1, h2, h3, h4, h5, h6 {
   border-bottom: var(--border);
   position: relative;
   overflow: hidden;
-  scroll-margin-top: 140px;
+  scroll-margin-top: 160px;
 }
 
 .section-inner {
