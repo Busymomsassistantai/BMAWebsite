@@ -1,4 +1,5 @@
 import { saveFormData } from './db.js'
+import { requestDeletion } from './deletion.js'
 
 // ===================================
 // Top Announcement Bar
@@ -264,6 +265,22 @@ function showNotification(message, type = 'success') {
 }
 
 // ===================================
+// Account Deletion Form
+// ===================================
+function initDeletionForm() {
+  const form = document.getElementById('deletionForm');
+  if (!form) return;
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const email = this.querySelector('input[type="email"]').value.trim();
+    if (!email) return;
+    await requestDeletion(email);
+    this.innerHTML = '<p class="deletion-confirm">If an account exists for this email, we\'ve sent a confirmation link. Please check your inbox.</p>';
+  });
+}
+
+// ===================================
 // Initialize Everything
 // ===================================
 document.addEventListener('DOMContentLoaded', function() {
@@ -276,4 +293,5 @@ document.addEventListener('DOMContentLoaded', function() {
   initSmoothScroll();
   initContactForm();
   initNewsletterForm();
+  initDeletionForm();
 });

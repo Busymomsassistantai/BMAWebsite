@@ -1521,3 +1521,88 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 10000;
   transition: width 0.1s linear;
 }
+
+/* ===================================
+   Delete Account Section
+   =================================== */
+
+/* Full-viewport feel — visually its own page */
+#delete-account {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  border-top: 3px solid var(--black);
+}
+
+/* Constrained, centered content area with proper breathing room */
+#delete-account .container {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-md);
+  width: 100%;
+}
+
+/* Kill the section-header's oversized bottom margin for this section */
+#delete-account .section-header {
+  margin-bottom: var(--space-md);
+}
+
+.delete-account-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+  margin-top: 0;
+}
+
+@media (max-width: 768px) {
+  .delete-account-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+}
+
+.delete-account-heading {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-xs);
+}
+
+.delete-account-info .delete-account-heading:first-child {
+  margin-top: 0;
+}
+
+.delete-account-list {
+  padding-left: var(--space-md);
+  color: var(--gray);
+  line-height: 1.8;
+}
+
+.delete-account-note {
+  color: var(--gray);
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.delete-account-form-wrap {
+  background: var(--white);
+  border: var(--border);
+  padding: var(--space-lg);
+}
+
+.delete-account-form-wrap .delete-account-note {
+  margin-bottom: var(--space-md);
+}
+
+.deletion-confirm {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--gray);
+  padding: var(--space-md) 0;
+}
