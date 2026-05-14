@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Press Release — Busy Moms Assistant AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cream: #FEF6F0;
+      --black: #1a1a1a;
+      --dark: #14191f;
+      --white: #ffffff;
+      --lavender: #DCD3E8;
+      --mint: #C9E4DE;
+      --font-serif: 'DM Serif Display', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --border: 2px solid var(--black);
+      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--cream);
+      color: var(--black);
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Nav ── */
+    .pr-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--cream);
+      border-bottom: var(--border);
+      padding: 0 24px;
+    }
+    .pr-nav-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .pr-nav-logo {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+    .pr-back {
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 2px;
+      transition: border-color 0.2s var(--ease);
+    }
+    .pr-back:hover { border-color: var(--black); }
+
+    /* ── Page wrapper ── */
+    .pr-page {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 64px 24px 120px;
+    }
+
+    /* ── Header block ── */
+    .pr-header {
+      border-bottom: var(--border);
+      padding-bottom: 40px;
+      margin-bottom: 48px;
+    }
+    .pr-eyebrow {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      background: var(--black);
+      color: var(--white);
+      display: inline-block;
+      padding: 4px 12px;
+      margin-bottom: 24px;
+    }
+    .pr-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(28px, 5vw, 44px);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+    .pr-dateline {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--black);
+      opacity: 0.6;
+    }
+
+    /* ── Body sections ── */
+    .pr-section {
+      margin-bottom: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(26,26,26,0.15);
+    }
+    .pr-section:last-of-type {
+      border-bottom: none;
+    }
+    .pr-section-title {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .pr-body {
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 16px;
+      color: var(--black);
+    }
+    .pr-body:last-child { margin-bottom: 0; }
+
+    .pr-quote {
+      border-left: 4px solid var(--black);
+      padding: 16px 24px;
+      margin: 24px 0;
+      background: rgba(26,26,26,0.04);
+      font-style: italic;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+    .pr-quote cite {
+      display: block;
+      margin-top: 10px;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .pr-list {
+      list-style: none;
+      margin: 16px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .pr-list li {
+      display: flex;
+      gap: 12px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    .pr-list li::before {
+      content: '→';
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── People grid ── */
+    .pr-people {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .pr-person {
+      border: var(--border);
+      padding: 20px;
+      background: var(--white);
+    }
+    .pr-person-name {
+      font-family: var(--font-serif);
+      font-size: 17px;
+      margin-bottom: 4px;
+    }
+    .pr-person-role {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      opacity: 0.55;
+    }
+
+    /* ── Availability block ── */
+    .pr-availability {
+      background: var(--dark);
+      color: var(--white);
+      padding: 40px;
+      margin: 48px 0;
+    }
+    .pr-availability h3 {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      margin-bottom: 12px;
+      color: var(--white);
+    }
+    .pr-availability p {
+      font-size: 16px;
+      opacity: 0.8;
+      margin-bottom: 20px;
+    }
+    .pr-availability-links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .pr-availability-links a {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--white);
+      opacity: 0.85;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 0.2s;
+    }
+    .pr-availability-links a:hover { opacity: 1; }
+
+    /* ── Closing statement ── */
+    .pr-closing {
+      background: var(--lavender);
+      border: var(--border);
+      padding: 40px;
+      margin: 48px 0;
+      text-align: center;
+    }
+    .pr-closing p {
+      font-size: 17px;
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+    .pr-closing .pr-tagline {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-style: italic;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── About & contact ── */
+    .pr-about {
+      background: var(--mint);
+      border: var(--border);
+      padding: 40px;
+    }
+    .pr-about h3 {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+    .pr-about p { font-size: 16px; line-height: 1.8; margin-bottom: 12px; }
+    .pr-about p:last-child { margin-bottom: 0; }
+    .pr-contact-block {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(26,26,26,0.2);
+    }
+    .pr-contact-block h4 {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+      opacity: 0.6;
+    }
+    .pr-contact-block p { font-size: 15px; margin-bottom: 4px; }
+    .pr-contact-block a {
+      border-bottom: 1px solid var(--black);
+      padding-bottom: 1px;
+    }
+
+    @media (max-width: 600px) {
+      .pr-page { padding: 40px 16px 80px; }
+      .pr-availability { padding: 28px 20px; }
+      .pr-closing { padding: 28px 20px; }
+      .pr-about { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="pr-nav">
+    <div class="pr-nav-inner">
+      <span class="pr-nav-logo">Busy Moms Assistant AI</span>
+      <a href="index.html" class="pr-back">← Back to site</a>
+    </div>
+  </nav>
+
+  <main class="pr-page">
+
+    <!-- Header -->
+    <header class="pr-header">
+      <span class="pr-eyebrow">Press Release</span>
+      <h1 class="pr-headline">Busy Moms Assistant AI Launches to Help Families Reclaim Time and Reduce Mental Load</h1>
+      <p class="pr-dateline">Davie, Florida &mdash; May 12, 2026</p>
+    </header>
+
+    <!-- Intro -->
+    <section class="pr-section">
+      <p class="pr-body">Busy Moms Assistant AI, a new AI-powered assistant for moms and families, has officially launched on the Google Play Store. Designed to simplify daily life, the app brings together smart automation, task management, and intuitive organization tools to help families stay on top of everything &mdash; without the overwhelm.</p>
+      <p class="pr-body">At its core, Busy Moms Assistant AI was built from a deeply personal place: the love and respect for the moms in our lives.</p>
+      <p class="pr-body">Behind every school event, appointment, grocery list, and reminder is an invisible mental load that often goes unnoticed. It's the constant thinking, planning, remembering, and coordinating that keeps a family running. This app was created to help lighten that load, so moms can spend less time managing everything &mdash; and more time being present for what truly matters.</p>
+      <blockquote class="pr-quote">
+        "We didn't just build an app, we built something we wish the moms in our lives always had. This came from seeing firsthand how much they carry every single day. Our goal is to give that time and mental space back."
+        <cite>Gabriel Garcia, Co-Founder</cite>
+      </blockquote>
+    </section>
+
+    <!-- Built to Simplify -->
+    <section class="pr-section">
+      <h2 class="pr-section-title">Built to Simplify Real Life</h2>
+      <p class="pr-body">Busy Moms Assistant AI combines multiple tools into one seamless experience, allowing users to:</p>
+      <ul class="pr-list">
+        <li>Scan a school flyer, birthday invitation, or any event &mdash; automatically added to your calendar</li>
+        <li>Capture tasks, reminders, and notes instantly using AI</li>
+        <li>Assign tasks to your spouse, husband, or family members &mdash; no more repeating yourself</li>
+        <li>Simplify shopping, planning, and everyday routines</li>
+        <li>Keep the entire household aligned and organized in one place</li>
+      </ul>
+      <p class="pr-body">By bringing these features together, the app eliminates the need to juggle multiple apps &mdash; saving time, reducing stress, and improving how families coordinate daily life.</p>
+    </section>
+
+    <!-- Team -->
+    <section class="pr-section">
+      <h2 class="pr-section-title">A Team Built on Purpose</h2>
+      <p class="pr-body">Busy Moms Assistant AI was co-founded by a team united by a shared mission: to build technology that genuinely improves everyday life for families.</p>
+      <div class="pr-people">
+        <div class="pr-person">
+          <p class="pr-person-name">Gabriel Garcia</p>
+          <p class="pr-person-role">Co-Founder</p>
+        </div>
+        <div class="pr-person">
+          <p class="pr-person-name">Daniel Ppool</p>
+          <p class="pr-person-role">Co-Founder &amp; CTO</p>
+        </div>
+        <div class="pr-person">
+          <p class="pr-person-name">Alfredo Ayme</p>
+          <p class="pr-person-role">Co-Founder &amp; COO</p>
+        </div>
+      </div>
+      <blockquote class="pr-quote">
+        "This isn't about doing more. It's about helping families focus on what matters most without being overwhelmed by everything else."
+        <cite>Daniel Ppool, CTO</cite>
+      </blockquote>
+      <blockquote class="pr-quote">
+        "Our focus has always been on creating something simple, useful, and impactful. We wanted to build a system that supports real life &mdash; not something that adds more complexity."
+        <cite>Alfredo Ayme, COO</cite>
+      </blockquote>
+    </section>
+
+    <!-- NSU Contributors -->
+    <section class="pr-section">
+      <h2 class="pr-section-title">Powered by the Next Generation</h2>
+      <p class="pr-body">The development and growth of Busy Moms Assistant AI was also supported by a dedicated group of student contributors from Nova Southeastern University (NSU), whose work played a meaningful role in bringing the platform to life.</p>
+      <div class="pr-people">
+        <div class="pr-person">
+          <p class="pr-person-name">Ritanshu Singh</p>
+          <p class="pr-person-role">NSU Contributor</p>
+        </div>
+        <div class="pr-person">
+          <p class="pr-person-name">Alvaro Garcia</p>
+          <p class="pr-person-role">NSU Contributor</p>
+        </div>
+        <div class="pr-person">
+          <p class="pr-person-name">Nehal Gaur</p>
+          <p class="pr-person-role">NSU Contributor</p>
+        </div>
+      </div>
+      <p class="pr-body">Their involvement not only helped accelerate progress but also reflects the collaborative spirit behind the company: building something impactful together, across generations.</p>
+    </section>
+
+    <!-- Availability -->
+    <div class="pr-availability">
+      <h3>Now Available on Google Play</h3>
+      <p>Busy Moms Assistant AI is now available for download on the Google Play Store, with an iOS release expected soon.</p>
+      <div class="pr-availability-links">
+        <a href="https://play.google.com/store/apps/details?id=com.busymoms.mobile" target="_blank" rel="noopener">→ Download on Google Play</a>
+        <a href="https://www.busymomsassistantai.com" target="_blank" rel="noopener">→ www.busymomsassistantai.com</a>
+      </div>
+    </div>
+
+    <!-- Closing -->
+    <div class="pr-closing">
+      <p>Busy Moms Assistant AI is more than a productivity tool &mdash; it's a way to help families shift from constant task management to meaningful moments.</p>
+      <p>Because at the end of the day, it's not about remembering everything.</p>
+      <p>It's about having the freedom to focus on why it all matters.</p>
+      <p class="pr-tagline">"You handle the love; we'll handle the rest."</p>
+    </div>
+
+    <!-- About & Contact -->
+    <div class="pr-about">
+      <h3>About Busy Moms Assistant AI</h3>
+      <p>Busy Moms Assistant AI is an innovative AI assistant for moms and families, designed to simplify daily life through smart automation, task management, and intuitive organization. The platform helps users manage schedules, assign responsibilities, and streamline routines &mdash; all from one place.</p>
+      <div class="pr-contact-block">
+        <h4>Media Contact</h4>
+        <p>Busy Moms Assistant AI</p>
+        <p>Email: <a href="mailto:info@bmaapp.com">info@bmaapp.com</a></p>
+        <p>Website: <a href="https://www.busymomsassistantai.com" target="_blank" rel="noopener">www.busymomsassistantai.com</a></p>
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>

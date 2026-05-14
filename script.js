@@ -143,10 +143,16 @@ function initSmoothScroll() {
       if (targetId === '#') return;
 
       const target = document.querySelector(targetId);
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      if (!target) return;
+
+      e.preventDefault();
+
+      const header = document.getElementById('siteHeader');
+      const headerHeight = header ? header.getBoundingClientRect().height : 0;
+      const extraOffset = parseInt(target.dataset.scrollOffset || '0', 10);
+      const targetTop = target.getBoundingClientRect().top + window.scrollY - headerHeight - extraOffset;
+
+      window.scrollTo({ top: targetTop, behavior: 'smooth' });
     });
   });
 }
@@ -284,6 +290,7 @@ function initDeletionForm() {
 // Initialize Everything
 // ===================================
 document.addEventListener('DOMContentLoaded', function() {
+  document.body.classList.add('js-animate');
   initTopbar();
   initHeaderScroll();
   initMobileMenu();
