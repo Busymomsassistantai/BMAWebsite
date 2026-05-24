@@ -60,8 +60,6 @@
     </ul>
   </div>
 
-  <h1>BUSY MOMS ASSISTANT AI</h1>
-
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-inner">
@@ -524,5 +522,42 @@
   </footer>
 
   <script type="module" src="script.js"></script>
+
+  <!-- Slider runs as a plain script so it works even if the ES module above fails to load (e.g. file:// protocol) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var track = document.getElementById('sliderTrack');
+      var prevBtn = document.getElementById('sliderPrev');
+      var nextBtn = document.getElementById('sliderNext');
+      var counter = document.getElementById('sliderCounter');
+      if (!track || !prevBtn || !nextBtn) return;
+
+      var slides = track.querySelectorAll('.slide');
+      var total = slides.length;
+      var current = 0;
+
+      function goTo(index) {
+        if (index < 0) index = total - 1;
+        if (index >= total) index = 0;
+        current = index;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        if (counter) counter.textContent = (current + 1) + ' / ' + total;
+      }
+
+      prevBtn.addEventListener('click', function () { goTo(current - 1); });
+      nextBtn.addEventListener('click', function () { goTo(current + 1); });
+
+      document.addEventListener('keydown', function (e) {
+        var slider = document.getElementById('featureSlider');
+        if (!slider) return;
+        var rect = slider.getBoundingClientRect();
+        if (rect.top >= window.innerHeight || rect.bottom <= 0) return;
+        if (e.key === 'ArrowLeft') goTo(current - 1);
+        if (e.key === 'ArrowRight') goTo(current + 1);
+      });
+
+      goTo(0);
+    });
+  </script>
 </body>
 </html>
