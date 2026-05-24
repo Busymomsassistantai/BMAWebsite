@@ -1212,8 +1212,14 @@ h1, h2, h3, h4, h5, h6 {
    =================================== */
 .press-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  max-width: 720px;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+@media (max-width: 768px) {
+  .press-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .press-card {

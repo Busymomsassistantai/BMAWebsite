@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Press Release — Busy Moms Assistant AI Gains Early Momentum</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cream: #FEF6F0;
+      --black: #1a1a1a;
+      --dark: #14191f;
+      --white: #ffffff;
+      --lavender: #DCD3E8;
+      --mint: #C9E4DE;
+      --font-serif: 'DM Serif Display', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --border: 2px solid var(--black);
+      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--cream);
+      color: var(--black);
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Nav ── */
+    .pr-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--cream);
+      border-bottom: var(--border);
+      padding: 0 24px;
+    }
+    .pr-nav-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .pr-nav-logo {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+    .pr-back {
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 2px;
+      transition: border-color 0.2s var(--ease);
+    }
+    .pr-back:hover { border-color: var(--black); }
+
+    /* ── Page wrapper ── */
+    .pr-page {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 64px 24px 120px;
+    }
+
+    /* ── For Immediate Release banner ── */
+    .pr-fir {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--black);
+      opacity: 0.5;
+      margin-bottom: 20px;
+    }
+
+    /* ── Header block ── */
+    .pr-header {
+      border-bottom: var(--border);
+      padding-bottom: 40px;
+      margin-bottom: 48px;
+    }
+    .pr-eyebrow {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      background: var(--black);
+      color: var(--white);
+      display: inline-block;
+      padding: 4px 12px;
+      margin-bottom: 24px;
+    }
+    .pr-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(28px, 5vw, 44px);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+    .pr-dateline {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--black);
+      opacity: 0.6;
+    }
+
+    /* ── Body sections ── */
+    .pr-section {
+      margin-bottom: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(26,26,26,0.15);
+    }
+    .pr-section:last-of-type { border-bottom: none; }
+
+    .pr-section-title {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .pr-body {
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .pr-body:last-child { margin-bottom: 0; }
+
+    .pr-quote {
+      border-left: 4px solid var(--black);
+      padding: 16px 24px;
+      margin: 24px 0;
+      background: rgba(26,26,26,0.04);
+      font-style: italic;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+    .pr-quote cite {
+      display: block;
+      margin-top: 10px;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .pr-list {
+      list-style: none;
+      margin: 16px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .pr-list li {
+      display: flex;
+      gap: 12px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    .pr-list li::before {
+      content: '→';
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── People grid ── */
+    .pr-people {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .pr-person {
+      border: var(--border);
+      padding: 20px;
+      background: var(--white);
+    }
+    .pr-person-name {
+      font-family: var(--font-serif);
+      font-size: 17px;
+      margin-bottom: 4px;
+    }
+    .pr-person-role {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      opacity: 0.55;
+    }
+
+    /* ── Highlight stat banner ── */
+    .pr-highlight {
+      background: var(--lavender);
+      border: var(--border);
+      padding: 32px 40px;
+      margin: 32px 0;
+    }
+    .pr-highlight p {
+      font-family: var(--font-serif);
+      font-size: clamp(18px, 2.5vw, 24px);
+      letter-spacing: -0.02em;
+      line-height: 1.4;
+    }
+
+    /* ── Closing statement ── */
+    .pr-closing {
+      background: var(--dark);
+      color: var(--white);
+      padding: 40px;
+      margin: 48px 0;
+      text-align: center;
+    }
+    .pr-closing .pr-tagline {
+      font-family: var(--font-serif);
+      font-size: clamp(22px, 3vw, 30px);
+      font-style: italic;
+      letter-spacing: -0.02em;
+      color: var(--white);
+    }
+
+    /* ── Footer contact ── */
+    .pr-contact {
+      background: var(--mint);
+      border: var(--border);
+      padding: 40px;
+    }
+    .pr-contact h3 {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+    .pr-contact p { font-size: 15px; margin-bottom: 6px; }
+    .pr-contact a {
+      border-bottom: 1px solid var(--black);
+      padding-bottom: 1px;
+    }
+
+    @media (max-width: 600px) {
+      .pr-page { padding: 40px 16px 80px; }
+      .pr-highlight { padding: 24px 20px; }
+      .pr-closing { padding: 28px 20px; }
+      .pr-contact { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="pr-nav">
+    <div class="pr-nav-inner">
+      <span class="pr-nav-logo">Busy Moms Assistant AI</span>
+      <a href="index.html" class="pr-back">← Back to site</a>
+    </div>
+  </nav>
+
+  <main class="pr-page">
+
+    <!-- Header -->
+    <header class="pr-header">
+      <p class="pr-fir">For Immediate Release</p>
+      <span class="pr-eyebrow">Press Release</span>
+      <h1 class="pr-headline">Busy Moms Assistant AI Gains Early Momentum Following Google Play Launch</h1>
+      <p class="pr-dateline">Davie, Florida</p>
+    </header>
+
+    <!-- Intro -->
+    <section class="pr-section">
+      <div class="pr-highlight">
+        <p>Just days after launching on the Google Play Store, Busy Moms Assistant AI is already gaining early momentum within the Parenting app category, earning recognition from mobile app analytics platform AppBrain as one of the trending Parenting apps in the United States.</p>
+      </div>
+      <p class="pr-body">Built with the mission of helping families reduce stress, organize daily life, and lighten the invisible mental load carried by parents, Busy Moms Assistant AI combines AI-powered tools with real-life family organization features designed for modern households.</p>
+    </section>
+
+    <!-- Features -->
+    <section class="pr-section">
+      <h2 class="pr-section-title">The app includes:</h2>
+      <ul class="pr-list">
+        <li>AI-powered family assistance</li>
+        <li>Smart calendar synchronization</li>
+        <li>Voice and photo-based event capture</li>
+        <li>Household task delegation</li>
+        <li>Mental note organization</li>
+        <li>Family reminders and productivity tools</li>
+      </ul>
+    </section>
+
+    <!-- Founders -->
+    <section class="pr-section">
+      <h2 class="pr-section-title">The Team</h2>
+      <p class="pr-body">The platform was created by founders who developed the app out of a shared desire to support the moms and families in their lives through technology that feels helpful, practical, and human.</p>
+      <div class="pr-people">
+        <div class="pr-person">
+          <p class="pr-person-name">Gabriel Garcia</p>
+          <p class="pr-person-role">Co-Founder</p>
+        </div>
+        <div class="pr-person">
+          <p class="pr-person-name">Daniel Ppool</p>
+          <p class="pr-person-role">Co-Founder &amp; CTO</p>
+        </div>
+        <div class="pr-person">
+          <p class="pr-person-name">Alfredo Ayme</p>
+          <p class="pr-person-role">Co-Founder &amp; COO</p>
+        </div>
+      </div>
+      <blockquote class="pr-quote">
+        "This recognition is exciting because it validates that families are looking for smarter and more supportive tools to help manage everyday life. We're still at the beginning, but seeing this kind of early traction motivates us to continue building."
+        <cite>Busy Moms Assistant AI Leadership Team</cite>
+      </blockquote>
+    </section>
+
+    <!-- NSU Contributors -->
+    <section class="pr-section">
+      <h2 class="pr-section-title">Student Contributors</h2>
+      <p class="pr-body">The company also highlighted the important contributions made by student interns from Nova Southeastern University, whose creativity, technical support, and dedication played an important role throughout the app's development and launch process.</p>
+      <div class="pr-people">
+        <div class="pr-person">
+          <p class="pr-person-name">Ritanshu Singh</p>
+          <p class="pr-person-role">NSU Intern</p>
+        </div>
+        <div class="pr-person">
+          <p class="pr-person-name">Alvaro Garcia</p>
+          <p class="pr-person-role">NSU Intern</p>
+        </div>
+        <div class="pr-person">
+          <p class="pr-person-name">Nehal Gaur</p>
+          <p class="pr-person-role">NSU Intern</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Availability -->
+    <section class="pr-section">
+      <h2 class="pr-section-title">Availability</h2>
+      <p class="pr-body">Busy Moms Assistant AI is currently available on the Google Play Store, with an Apple App Store release expected soon.</p>
+    </section>
+
+    <!-- Closing -->
+    <div class="pr-closing">
+      <p class="pr-tagline">"You handle the love, we'll handle the rest."</p>
+    </div>
+
+    <!-- Contact -->
+    <div class="pr-contact">
+      <h3>For Updates &amp; Downloads</h3>
+      <p>Website: <a href="https://www.busymomsassistantai.com" target="_blank" rel="noopener">www.busymomsassistantai.com</a></p>
+      <p>Email: <a href="mailto:info@bmaapp.com">info@bmaapp.com</a></p>
+    </div>
+
+  </main>
+
+</body>
+</html>
