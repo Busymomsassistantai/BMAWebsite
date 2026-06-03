@@ -1216,6 +1216,10 @@ h1, h2, h3, h4, h5, h6 {
   gap: var(--space-md);
 }
 
+.press-card--featured {
+  grid-column: 1 / -1;
+}
+
 @media (max-width: 768px) {
   .press-grid {
     grid-template-columns: 1fr;
