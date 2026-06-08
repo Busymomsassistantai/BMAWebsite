@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delete Data Request | Busy Moms Assistant AI</title>
+  <link rel="stylesheet" href="style.css?v=30">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="topbar" id="topbar">
+    <div class="topbar-inner">
+      <p class="topbar-text">We're building the future of family support. <a href="/#contact">Join the waitlist &rarr;</a></p>
+      <button class="topbar-close" id="topbarClose" aria-label="Close announcement">&times;</button>
+    </div>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="header" id="siteHeader">
+    <div class="header-inner">
+      <div class="header-logo">
+        <a href="/" class="logo-link">
+          <img src="Images/logo.png?v=28" alt="Busy Moms Assistant" class="logo-img">
+          <span class="logo-name">Busy Moms Assistant AI</span>
+        </a>
+      </div>
+      <nav class="header-nav">
+        <ul class="nav-list">
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#mission">Mission</a></li>
+          <li><a href="/#features">Features</a></li>
+          <li><a href="/#impact">Impact</a></li>
+          <li><a href="/#press">Press</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-nav-list">
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#mission">Mission</a></li>
+      <li><a href="/#features">Features</a></li>
+      <li><a href="/#impact">Impact</a></li>
+      <li><a href="/#press">Press</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </div>
+
+  <main>
+    <section id="delete-account" class="section section--lavender">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Delete Your Account</h2>
+          <p class="section-subtitle">Request permanent deletion of your Busy Moms account and all associated data.</p>
+        </div>
+
+        <div class="delete-account-layout">
+
+          <div class="delete-account-info">
+            <h3 class="delete-account-heading">What gets deleted</h3>
+            <ul class="delete-account-list">
+              <li>Account and profile</li>
+              <li>Events, tasks, reminders, and contacts</li>
+              <li>Family members, recipes, and shopping lists</li>
+              <li>Life receipts and cycle data</li>
+              <li>Notification settings, sync mappings, and push tokens</li>
+              <li>Subscription record and all other associated app data</li>
+            </ul>
+
+            <h3 class="delete-account-heading">What stays</h3>
+            <ul class="delete-account-list">
+              <li>Events the app added to your Google Calendar remain on Google Calendar</li>
+              <li>Your Google Contacts and Google Tasks are not deleted</li>
+              <li>Items assigned to your email by other users are unlinked, not deleted</li>
+            </ul>
+
+            <h3 class="delete-account-heading">iOS subscriptions</h3>
+            <p class="delete-account-note">If you have an active App Store subscription, you must cancel it yourself in <strong>Settings &rarr; Apple ID &rarr; Subscriptions</strong>. Apple does not allow us to cancel subscriptions on your behalf.</p>
+
+            <h3 class="delete-account-heading">Timeline</h3>
+            <p class="delete-account-note">Deletion is processed within 30 days of confirmation.</p>
+          </div>
+
+          <div class="delete-account-form-wrap">
+            <p class="delete-account-note">Enter the email address associated with your Busy Moms account. We'll send you a confirmation link to verify the request is from you.</p>
+            <form id="deletionForm" class="contact-form" novalidate>
+              <div class="form-group">
+                <label for="deletionEmail">Email address</label>
+                <input type="email" id="deletionEmail" name="email" placeholder="you@example.com" required>
+              </div>
+              <button type="submit" class="site-btn">Request Account Deletion <span class="btn-arrow">&rarr;</span></button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-col footer-brand">
+          <p class="footer-tagline">Empowering moms with intelligent, empathetic AI solutions.</p>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-nav-title">Navigation</h4>
+          <ul class="footer-nav">
+            <li><a href="/#about">About</a></li>
+            <li><a href="/#mission">Mission</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#impact">Impact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-nav-title">Connect</h4>
+          <ul class="footer-nav">
+            <li><a href="/#contact">Contact Us</a></li>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">LinkedIn</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-nav-title">Legal</h4>
+          <ul class="footer-nav">
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/terms-of-service">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Busy Moms Assistant AI. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
